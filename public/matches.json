@@ -1,0 +1,66 @@
+[
+  {
+    "match_id": "atl-01",
+    "team_a": "USA",
+    "team_b": "Bolivia",
+    "kickoff_utc": "2026-06-14T23:00:00Z",
+    "stage": "Group Stage",
+    "group": "C"
+  },
+  {
+    "match_id": "atl-02",
+    "team_a": "Argentina",
+    "team_b": "Chile",
+    "kickoff_utc": "2026-06-19T23:00:00Z",
+    "stage": "Group Stage",
+    "group": "D"
+  },
+  {
+    "match_id": "atl-03",
+    "team_a": "Brazil",
+    "team_b": "Ecuador",
+    "kickoff_utc": "2026-06-22T22:00:00Z",
+    "stage": "Group Stage",
+    "group": "E"
+  },
+  {
+    "match_id": "atl-04",
+    "team_a": "Colombia",
+    "team_b": "Mexico",
+    "kickoff_utc": "2026-06-25T22:00:00Z",
+    "stage": "Group Stage",
+    "group": "F"
+  },
+  {
+    "match_id": "atl-05",
+    "team_a": "France",
+    "team_b": "Belgium",
+    "kickoff_utc": "2026-06-28T19:00:00Z",
+    "stage": "Group Stage",
+    "group": "G"
+  },
+  {
+    "match_id": "atl-06",
+    "team_a": "Spain",
+    "team_b": "Germany",
+    "kickoff_utc": "2026-07-01T22:00:00Z",
+    "stage": "Group Stage",
+    "group": "H"
+  },
+  {
+    "match_id": "atl-07",
+    "team_a": "TBD",
+    "team_b": "TBD",
+    "kickoff_utc": "2026-07-06T22:00:00Z",
+    "stage": "Round of 16",
+    "group": null
+  },
+  {
+    "match_id": "atl-08",
+    "team_a": "TBD",
+    "team_b": "TBD",
+    "kickoff_utc": "2026-07-10T22:00:00Z",
+    "stage": "Quarterfinal",
+    "group": null
+  }
+]

@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* Design system: Match Day ATL */
+
+:root {
+  --bg: #fafaf8;
+  --surface: #f3f4f6;
+  --border: #e5e7eb;
+  --accent: #e8a838;
+  --accent-hover: #d4942a;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --delay: #f0883e;
+  --error: #dc2626;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --accent: #e8a838;
+    --accent-hover: #d4942a;
+    --text: #f0f6fc;
+    --text-muted: #8b949e;
+    --delay: #f0883e;
+    --error: #f85149;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-delay: var(--delay);
+  --color-error: var(--error);
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Streaming cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.streaming-cursor::after {
+  content: "|";
+  animation: blink 530ms step-end infinite;
+  color: var(--accent);
+  margin-left: 1px;
+}
