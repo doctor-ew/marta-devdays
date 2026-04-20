@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import { renderToString } from 'react-dom/server';
 import { Bus, Train } from 'lucide-react';
 import { Loader } from '@googlemaps/js-api-loader';
@@ -57,6 +57,7 @@ export default function MapView() {
   const markersRef = useRef<Map<string, google.maps.marker.AdvancedMarkerElement>>(new Map());
   const trafficLayerRef = useRef<google.maps.TrafficLayer | null>(null);
   const trafficVisibleRef = useRef(false);
+  const [mapReady, setMapReady] = useState(false);
 
   const { data: liveData } = useSWR<MartaApiResponse>(
     IS_STATIC ? null : '/api/marta',
@@ -92,6 +93,7 @@ export default function MapView() {
         fullscreenControl: false,
       });
       mapInstanceRef.current = map;
+      setMapReady(true);
 
       const stadiumDiv = document.createElement('div');
       stadiumDiv.textContent = '⚽';
@@ -176,7 +178,7 @@ export default function MapView() {
 
   useEffect(() => {
     if (data?.vehicles) updateMarkers(data.vehicles);
-  }, [data, updateMarkers]);
+  }, [data, updateMarkers, mapReady]);
 
   if (!apiKey) {
     return (
