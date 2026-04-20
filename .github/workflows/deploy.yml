@@ -32,6 +32,7 @@ jobs:
         env:
           NEXT_PUBLIC_STATIC_DEMO: true
           NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
+          NEXT_PUBLIC_API_BASE: https://atl-fifa-navigator-v2.vercel.app
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

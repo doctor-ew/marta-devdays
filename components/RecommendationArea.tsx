@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import type { Zone, DelayState } from '@/types';
-import { getFallback } from '@/lib/fallbacks';
-
-const IS_STATIC = process.env.NEXT_PUBLIC_STATIC_DEMO === 'true';
+const API_BASE = process.env.NEXT_PUBLIC_STATIC_DEMO === 'true'
+  ? (process.env.NEXT_PUBLIC_API_BASE ?? '')
+  : '';
 
 interface Props {
   zone: Zone;
@@ -21,12 +21,6 @@ export default function RecommendationArea({ zone, matchId, delayState, trigger 
   const abortRef = useRef<AbortController | null>(null);
 
   const doFetch = useCallback(async () => {
-    if (IS_STATIC) {
-      setText(getFallback(zone, delayState));
-      setStatus('done');
-      return;
-    }
-
     abortRef.current?.abort();
     const controller = new AbortController();
     abortRef.current = controller;
@@ -35,7 +29,7 @@ export default function RecommendationArea({ zone, matchId, delayState, trigger 
     setStatus('loading');
 
     try {
-      const res = await fetch('/api/recommend', {
+      const res = await fetch(`${API_BASE}/api/recommend`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ zone, match_id: matchId, delay_state: delayState }),

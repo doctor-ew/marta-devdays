@@ -6,9 +6,8 @@ import { Bus, Train } from 'lucide-react';
 import { Loader } from '@googlemaps/js-api-loader';
 import useSWR from 'swr';
 import type { Vehicle, MartaApiResponse } from '@/types';
-import { MOCK_VEHICLES } from '@/lib/marta';
-
 const IS_STATIC = process.env.NEXT_PUBLIC_STATIC_DEMO === 'true';
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? '';
 
 const STADIUM_LAT = parseFloat(process.env.NEXT_PUBLIC_STADIUM_LAT ?? '33.7554');
 const STADIUM_LNG = parseFloat(process.env.NEXT_PUBLIC_STADIUM_LNG ?? '-84.4011');
@@ -59,14 +58,11 @@ export default function MapView() {
   const trafficVisibleRef = useRef(false);
   const [mapReady, setMapReady] = useState(false);
 
-  const { data: liveData } = useSWR<MartaApiResponse>(
-    IS_STATIC ? null : '/api/marta',
-    fetcher,
-    { refreshInterval: 2000, dedupingInterval: 1000 },
-  );
-  const data: MartaApiResponse | undefined = IS_STATIC
-    ? { vehicles: MOCK_VEHICLES, cached: false, source: 'mock' }
-    : liveData;
+  const martaUrl = IS_STATIC ? `${API_BASE}/api/marta` : '/api/marta';
+  const { data } = useSWR<MartaApiResponse>(martaUrl, fetcher, {
+    refreshInterval: 2000,
+    dedupingInterval: 1000,
+  });
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
