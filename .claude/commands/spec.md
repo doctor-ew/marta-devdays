@@ -98,7 +98,9 @@ A spec file at `docs/<TASK_ID>/SPEC.md`.
 - Solution design
 - Files to change
 - Acceptance criteria (GIVEN/WHEN/THEN)
-- Risks, dependencies, test plan, sources
+- Risks, dependencies, test plan
+- **Model Router** — Sonnet vs Opus decision derived from files changed, modules spanned, and decision type
+- **Sources** — every file:line cited, with branch and commit SHA
 
 **Bug spec contains:**
 - Traces To (link to original story spec)

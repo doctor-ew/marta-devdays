@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pitch: #1a472a;
+  --color-pitch-light: #2d6a4f;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+#__next,
+main {
+  height: 100%;
+}
